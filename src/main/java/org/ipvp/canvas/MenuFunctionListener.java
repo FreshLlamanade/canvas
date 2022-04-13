@@ -94,7 +94,7 @@ public final class MenuFunctionListener implements Listener {
         // We are only processing clicks taking place in the view of a menu
         if (top.getHolder() instanceof MenuHolder) {
             Menu menu = ((MenuHolder) top.getHolder()).getMenu();
-            Inventory clicked = event.getClickedInventory();
+            Inventory clicked = event.getInventory();
             InventoryAction action = event.getAction();
             
             // Need to find the target slot
@@ -192,7 +192,7 @@ public final class MenuFunctionListener implements Listener {
 
                         ItemStack adding = new ItemStack(moving);
                         adding.setAmount(maxAvailable);
-                        passClickToSlot(event, event.getAction(), event.getClick(), event.getClickedInventory(), menu, nextAvailableSlot, adding);
+                        passClickToSlot(event, event.getAction(), event.getClick(), event.getInventory(), menu, nextAvailableSlot, adding);
                         nextAvailableSlot = getNextAvailableSlot(top, moving, nextAvailableSlot + 1);
                     }
                     break;
@@ -222,7 +222,7 @@ public final class MenuFunctionListener implements Listener {
     
     // Passes an inventory click event to a menu at a given slot
     private void passClickToSlot(InventoryClickEvent event, Menu menu, int slotIndex) {
-        passClickToSlot(event, event.getAction(), event.getClick(), event.getClickedInventory(), menu, slotIndex);
+        passClickToSlot(event, event.getAction(), event.getClick(), event.getInventory(), menu, slotIndex);
     }
     
     // Handles events where a slot was clicked inside an inventory
